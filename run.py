@@ -2,8 +2,8 @@ from random import randint
 
 scores = {"computer": 0, "player": 0}
 
-class board:
 
+class Board:
     """
     the board where the game is played by adding the number of ships to random 
     postions, players name to both the player and the computer
@@ -24,10 +24,10 @@ class board:
 
     def guess(self, x, y):
         self.guesses.append(x, y)    
-        self.board[x] [y] = "x"
+        self.board[x][y] = "x"
 
         if (x, y) in self.ships:
-            self.board[x] [y] = "*"
+            self.board[x][y] = "*"
             return "Hit"
         else:
             return "Miss"
@@ -38,13 +38,15 @@ class board:
         else:
             self.ships.append((x, y))      
             if self.type == "player":
-                self.board [x] [y] ="@"    
+                self.board[x][y] = "@"    
+
 
 def random_point(size):
     """
     creats a random number between 0 and the size of the board
     """             
     return randint(0, size - 1)
+
 
 def new_game():
     """
@@ -61,6 +63,13 @@ def new_game():
     print("-" * 35)
     player_name = input("please enter your name: \n")
     print("-" * 35)
+
+    ai_board = Board(size, num_ships, "AI", type="AI")
+    player_board = Board(size, num_ships, player_name, type="player")
+
+    populate_board(ai_board)
+    populate_board(player_board)
+    
 
 new_game()        
 
