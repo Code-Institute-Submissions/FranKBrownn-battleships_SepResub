@@ -12,7 +12,7 @@ def create_player_board():
         for number in colunm:
             newElement = letter+str(number)
             players_grid.append(newElement)
-            
+
     num_replacements = 4 
     idx = random.sample(range(len(players_grid)), num_replacements)
     for i in idx:
@@ -34,8 +34,10 @@ def create_computer_board():
             newElement = letter+str(number)
             computers_grid.append(newElement)
     print(computers_grid)
-    computer_ships = random.choices(computers_grid, 4)  
-    print(computer_ships) 
+    
+    UpdatedList = random.sample(computers_grid, 4)
+
+    #print(UpdatedList)
     
          
 def new_game():
@@ -56,11 +58,9 @@ def new_game():
 new_game()
 
        
+
+
     
-
-
-
-
     
     
 
