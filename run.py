@@ -50,7 +50,7 @@ def play_game(computers_grid, computer_ships, players_grid,  player_ships):
     print()
     while computer_num or player_num > 0:
 
-        player_pick_space = input("pick a space on the board it has ")
+        player_pick_space = input("pick a space on the board it has:\n")
         player_pick_space = player_pick_space.capitalize()
 
         if player_pick_space in computers_grid:
@@ -160,7 +160,7 @@ def new_game():
     print()
     print("GOOD LUCK!!!!")
     print()
-    player_name = input("please enter your name\n")
+    player_name = input("please enter your name:\n")
     print(f"welcome {player_name} get ready for some battleship warfare!!!\n")
     print(f"{player_name}'s battle felid")
 
