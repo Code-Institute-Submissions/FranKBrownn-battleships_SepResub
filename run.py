@@ -15,13 +15,15 @@ def create_player_board():
             newElement = letter+str(number)
             players_grid.append(newElement)
 
-    num_replacements = 4 
-    idx = random.sample(range(len(players_grid)), num_replacements)
-    for i in idx:
-        players_grid[i] = '@'
+    player_ships = (random.sample(players_grid, 4))
+    print()
     
-    print(players_grid)  
+    print(f"your ships {player_ships}")  
+    print()
 
+    print(players_grid) 
+    print()
+    
     #computer
 
     row = ["A", "B", "C", "D", "E"]
@@ -33,11 +35,10 @@ def create_player_board():
         for number in colunm:
             newElement = letter+str(number)
             computers_grid.append(newElement)
+    print()        
     print(computers_grid)
     
     computer_ships = (random.sample(computers_grid, 4))  
-
-    print(computer_ships) 
 
     play_game(computers_grid, computer_ships, players_grid,  player_ships)   
 
@@ -45,10 +46,13 @@ def create_player_board():
 def play_game(computers_grid, computer_ships, players_grid,  player_ships):
     computer_num = 4
     player_num = 4
-  
+    
+    print()
     print("pick a space on the board")
     print("the space has to be letter from A-E followed by a number from 1-5")
+    print()
     while computer_num or player_num > 0:
+        
         #players turn
         player_pick_space = input("pick a space on the board it has ")
         player_pick_space = player_pick_space.capitalize()
@@ -57,50 +61,90 @@ def play_game(computers_grid, computer_ships, players_grid,  player_ships):
             print(f"you picked {player_pick_space}")
         
             if player_pick_space in computer_ships:
-                print("HIT")
-                print("------------")
+                print()
+                print("YOU HIT")
+                
                 print()
     
                 computer_num = computer_num - 1
-            
+                computers_grid = [s.replace(player_pick_space, " x") for s in computers_grid]
             else:
-                print("MISS")
-                print("------------")
                 print()
-    
+                print("YOU MISS")
+                
+                print()
+                computers_grid = [s.replace(player_pick_space, " x") for s in computers_grid]
         else:
             print("this is an invalid number try again")
 
+        print("computer's battlefield")
         
-    
-        computers_grid = [s.replace(player_pick_space, " x ") for s in computers_grid]  
-
         print(computers_grid)
-        print("------------")
+        
         print()
         print("computer's turn")
-        print("------------")
+        
         print()
         print(f"the computer has {computer_num} ships remaining")
-        print("------------")
+        
         print()
-    
-        #computers turn
+        
+
         
         computer_pick_space = random.choice(players_grid)
-        print(f"the computer picked {computer_pick_space}")
-        print("------------")
-        print()
-        if player_pick_space == e2:
-            print("HIT")
+        if computer_pick_space != " x ":
+            print(f"the computer picked {computer_pick_space}")
+            print("------------")
+            print()
+            if computer_pick_space in player_ships:
+                print("COMPUTER HIT")
+                player_num = player_num - 1
+
+                print(f"you have {player_num} ships remaining")
+        
+            else:
+                print("COMPUTER MISS")
+                print(f"you have {player_num} ships remaining") 
         else:
-            print("MISS")    
+            computer_pick_space = random.choice(players_grid)
+            print(f"the computer picked {computer_pick_space}")
+            print("------------")
+            print()
+            if computer_pick_space in player_ships:
+                print("COMPUTER HIT")
+                player_num = player_num - 1
+
+                print(f"you have {player_num} ships remaining")
+        
+            else:
+                print("COMPUTER MISS")
+                print(f"you have {player_num} ships remaining")
+                
+        players_grid = [s.replace(computer_pick_space, " x") for s in players_grid]   
+
+        print()
+
+        print(f"your ships {player_ships}")
+        print()        
+        print("your battlfelid")
+        print(players_grid)
 
         
+          
 
-
+         
+        
         if computer_num == 0:
             print("CONGRATULATIONS YOU WON.THANK YOU FOR PLAYING MY BATTLES SHIPS GAME")
+            play_again = input("would you like to play again (y/n)")
+            
+            if play_again == "y":
+                create_player_board()
+            else:
+                print("Thank You for Playing") 
+                break  
+        if player_num == 0:
+            print("NOOOOOOO YOU LOST. YOU FOR PLAYING MY BATTLES SHIPS GAME") 
             play_again = input("would you like to play again (y/n)")
             
             if play_again == "y":
@@ -113,9 +157,6 @@ def play_game(computers_grid, computer_ships, players_grid,  player_ships):
             continue   
 
         
-
-    
-
 def new_game():
 
     """
@@ -123,6 +164,13 @@ def new_game():
     ships ready to play the game
     """
     print("welcome to battle ships supreame")
+    print()
+    print("your goal is to destroy the the ships on the enermy battle feild")
+    print("before the computer destroys the ships on your battlefeild")
+    print("the 1st player to destroy all battle ships wins ")
+    print()
+    print("GOOD LUCK!!!!")
+    print()
     player_name = input("please enter your name\n")
     print(f"welcome {player_name} get ready for some battleship warfare!!!\n")
     print(f"{player_name}'s battle felid")
