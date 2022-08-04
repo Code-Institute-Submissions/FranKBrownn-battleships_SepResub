@@ -20,10 +20,9 @@ def create_player_board():
     for i in idx:
         players_grid[i] = '@'
     
-    print(players_grid)   
-    print(player_ships)
+    print(players_grid)  
 
-    """computer"""
+    #computer
 
     row = ["A", "B", "C", "D", "E"]
     colunm = 1, 2, 3, 4, 5
@@ -50,6 +49,7 @@ def play_game(computers_grid, computer_ships, players_grid,  player_ships):
     print("pick a space on the board")
     print("the space has to be letter from A-E followed by a number from 1-5")
     while computer_num or player_num > 0:
+        #players turn
         player_pick_space = input("pick a space on the board it has ")
         player_pick_space = player_pick_space.capitalize()
     
@@ -58,20 +58,46 @@ def play_game(computers_grid, computer_ships, players_grid,  player_ships):
         
             if player_pick_space in computer_ships:
                 print("HIT")
+                print("------------")
+                print()
+    
                 computer_num = computer_num - 1
             
             else:
                 print("MISS")
+                print("------------")
+                print()
     
         else:
             print("this is an invalid number try again")
+
         
     
         computers_grid = [s.replace(player_pick_space, " x ") for s in computers_grid]  
 
         print(computers_grid)
+        print("------------")
+        print()
         print("computer's turn")
+        print("------------")
+        print()
         print(f"the computer has {computer_num} ships remaining")
+        print("------------")
+        print()
+    
+        #computers turn
+        
+        computer_pick_space = random.choice(players_grid)
+        print(f"the computer picked {computer_pick_space}")
+        print("------------")
+        print()
+        if player_pick_space == e2:
+            print("HIT")
+        else:
+            print("MISS")    
+
+        
+
 
         if computer_num == 0:
             print("CONGRATULATIONS YOU WON.THANK YOU FOR PLAYING MY BATTLES SHIPS GAME")
@@ -85,6 +111,8 @@ def play_game(computers_grid, computer_ships, players_grid,  player_ships):
 
         else:
             continue   
+
+        
 
     
 
