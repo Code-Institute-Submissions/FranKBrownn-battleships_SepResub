@@ -40,34 +40,52 @@ def create_player_board():
 
     print(computer_ships) 
 
-    play_game(players_grid, player_ships, computers_grid, computer_ships)   
+    play_game(computers_grid, computer_ships, players_grid,  player_ships)   
 
 
-def play_game(players_grid, player_ships, computers_grid, computer_ships):
-
+def play_game(computers_grid, computer_ships, players_grid,  player_ships):
+    computer_num = 4
+    player_num = 4
+  
     print("pick a space on the board")
     print("the space has to be letter from A-E followed by a number from 1-5")
-    player_pick_space = input("pick a space on the board it has ")
-    player_pick_space = player_pick_space.capitalize()
-
-    if player_pick_space in computers_grid:
-        print(f"you picked {player_pick_space}")
+    while computer_num or player_num > 0:
+        player_pick_space = input("pick a space on the board it has ")
+        player_pick_space = player_pick_space.capitalize()
+    
+        if player_pick_space in computers_grid:
+            print(f"you picked {player_pick_space}")
         
-        if player_pick_space in computer_ships:
-            print("HIT")
-            print("computers turn")
-            computers_grid[player_pick_space] = " x "
-            print(computers_grid)
+            if player_pick_space in computer_ships:
+                print("HIT")
+                computer_num = computer_num - 1
             
+            else:
+                print("MISS")
+    
         else:
-            print("MISS")
-            print("computers turn")
+            print("this is an invalid number try again")
+        
+    
+        computers_grid = [s.replace(player_pick_space, " x ") for s in computers_grid]  
 
-    else:
-        print("this is an invalid number try again")
-        play_game(players_grid, player_ships, computers_grid, computer_ships)
+        print(computers_grid)
+        print("computer's turn")
+        print(f"the computer has {computer_num} ships remaining")
 
-         
+        if computer_num == 0:
+            print("CONGRATULATIONS YOU WON.THANK YOU FOR PLAYING MY BATTLES SHIPS GAME")
+            play_again = input("would you like to play again (y/n)")
+            
+            if play_again == "y":
+                create_player_board()
+            else:
+                print("Thank You for Playing") 
+                break   
+
+        else:
+            continue   
+
     
 
 def new_game():
