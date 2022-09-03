@@ -53,6 +53,11 @@ def play_game(computers_grid, computer_ships, players_grid, player_ships):
         player_pick_space = input("pick a space on the board it has:\n")
         player_pick_space = player_pick_space.capitalize()
 
+        while player_pick_space not in computers_grid:
+            print("this is an invalid number try again")
+            player_pick_space = input("pick a space on the board it has:\n")
+            player_pick_space = player_pick_space.capitalize()
+
         if player_pick_space in computers_grid:
             print(f"you picked {player_pick_space}")
 
