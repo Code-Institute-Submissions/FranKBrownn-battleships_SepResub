@@ -29,7 +29,7 @@ i have spotted to bugs with in my code.
 
 1. for some unknown reason and it only happens now and again when the game has ended and one side has won, during the point where the player is asked to play again some time when click n for no the player will be booted back a little bit to do the last turn again for promting the question again so the player can exit properly. 
 
-2. during the game the players grid gets filled up with xs from where the AI has previously attack this can cause a problem because the AI randomises the next attack based on that new list mean somtimes the AI will attack with an X instead of a legel move. to reduce the chances of this happening i added a if != " x " else: the else stament had the code to make the AI pick is turn again before making the attack. this has not fixed the porblem but it help reduce it by a big margin as the AI now has a 2nd chance to guess right. 
+2. during the game the players grid gets filled up with xs from where the AI has previously attack this can cause a problem because the AI randomises the next attack based on that new list mean somtimes the AI will attack with an X instead of a legel move. to reduce the chances of this happening i added a if != " x " else: the else stament had the code to make the AI pick is turn again before making the attack. this has not fixed the porblem but it help reduce it by a big margin as the AI now has a 2nd chance to guess right. (this bug has now been fixed)
 
 ## creds
 i did quite a bit of reserch during this project as i found it very difficult at times. 
