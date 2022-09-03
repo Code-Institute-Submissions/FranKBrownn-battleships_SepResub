@@ -37,10 +37,10 @@ def create_player_board():
 
     computer_ships = (random.sample(computers_grid, 4))
 
-    play_game(computers_grid, computer_ships, players_grid,  player_ships)
+    play_game(computers_grid, computer_ships, players_grid, player_ships)
 
 
-def play_game(computers_grid, computer_ships, players_grid,  player_ships):
+def play_game(computers_grid, computer_ships, players_grid, player_ships):
     computer_num = 4
     player_num = 4
 
@@ -72,6 +72,7 @@ def play_game(computers_grid, computer_ships, players_grid,  player_ships):
                 computers_grid = [s.replace(player_pick_space, " x") for s in computers_grid]
         else:
             print("this is an invalid number try again")
+            
 
         print("computer's battlefield")
 
@@ -86,6 +87,9 @@ def play_game(computers_grid, computer_ships, players_grid,  player_ships):
         print()
 
         computer_pick_space = random.choice(players_grid)
+        while computer_pick_space == " x":
+            computer_pick_space = random.choice(players_grid)
+        
         if computer_pick_space != " x ":
             print(f"the computer picked {computer_pick_space}")
             print("------------")
@@ -168,3 +172,4 @@ def new_game():
 
 
 new_game()
+
