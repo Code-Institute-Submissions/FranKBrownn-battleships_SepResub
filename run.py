@@ -146,11 +146,13 @@ def play_game(computers_grid, computer_ships, players_grid, player_ships):
             play_again = input("would you like to play again (y/n)")
 
             if play_again == "y":
-                create_player_board()
+                new_game()
+            if play_again == "n":
+                print("Thank You for Playing")
+                break
             else:
                 print("Thank You for Playing")
                 break
-
         else:
             continue
 
