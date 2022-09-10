@@ -77,8 +77,7 @@ def play_game(computers_grid, computer_ships, players_grid, player_ships):
                 computers_grid = [s.replace(player_pick_space, " x") for s in computers_grid]
         else:
             print("this is an invalid number try again")
-            
-
+                    
         print("computer's battlefield")
 
         print(computers_grid)
